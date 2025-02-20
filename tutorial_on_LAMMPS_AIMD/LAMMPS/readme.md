@@ -24,7 +24,7 @@ Files Required for MD Simulations in LAMMPS
 
 To run any MD simulation, you need three essential files:
 
-1. Input File (`.in` file)
+1. Input File (`in.lammps` file)
 - Defines the simulation parameters, including temperature, pressure, time steps, and thermodynamic output settings.
 - Example:
    units metal
