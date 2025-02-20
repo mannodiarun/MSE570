@@ -51,7 +51,7 @@ Running an MD Simulation in LAMMPS
 Once you have prepared the input, structure, and force field files, you can run the simulation using:
 
 
-lmp_serial -in simulation.in
+lmp_serial -in in.lammps
 
 Visualizing the Results
 To analyze and visualize the simulation results, you can use OVITO (Open Visualization Tool):
