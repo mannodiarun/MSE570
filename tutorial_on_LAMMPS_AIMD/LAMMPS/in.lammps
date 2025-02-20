@@ -1,1 +1,57 @@
-This is a new folder
+# -----------------------------------------------------
+# LAMMPS input script: NVT heating + holding at 1200 K
+# -----------------------------------------------------
+
+units          metal
+atom_style     atomic
+boundary       p p p
+
+# Read atomic configuration
+read_data      Al.lmp
+
+# Define interatomic potential
+pair_style     eam/alloy
+pair_coeff     * * Mishin-Ni-Al-2009.eam.alloy Al
+
+# Neighbor settings
+neighbor       2.0 bin
+neigh_modify   delay 10 check yes
+
+# Initialize velocities at 300 K
+velocity       all create 300.0 12345 mom yes dist gaussian
+
+# Heating phase: Increase temperature from 300 K to 1200 K
+fix            1 all nvt temp 300.0 1200.0 5.0
+timestep       0.001
+thermo         100
+thermo_style   custom step temp pe ke etotal press vol
+
+# Compute per-atom kinetic energy and temperature
+compute        keAtom all ke/atom
+variable       T_atom atom c_keAtom/(1.5*8.617333262e-5)
+
+# Dump per-atom KE and temperature during heating
+dump           2 all custom 100 dump.melt id type x y z c_keAtom v_T_atom
+dump_modify    2 sort id
+
+# Run heating phase for 80 ps (80000 steps)
+run            80000
+
+# Remove the dump before resetting timestep
+undump         2
+
+# Reset timestep when entering relaxation phase
+reset_timestep 0
+
+# Remove the heating fix
+unfix          1
+
+# Holding phase: Maintain temperature at 1200 K for 5 ps
+fix            2 all nvt temp 1200.0 1200.0 5.0
+
+# Additional dump file for the holding phase at 1200 K
+dump           3 all custom 100 dump.relax id type x y z c_keAtom v_T_atom
+dump_modify    3 sort id
+
+# Run holding phase for 5 ps (5000 steps)
+run            5000
