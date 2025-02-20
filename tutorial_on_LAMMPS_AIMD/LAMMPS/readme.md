@@ -42,7 +42,7 @@ To run any MD simulation, you need three essential files:
    0.0 50.0 zlo zhi
 
 3. Force Field File (`.eam`, `.eam.alloy`, or `.potentials` file)
-- Defines the **interatomic interactions** using **empirical potentials** such as **EAM, MEAM, or LJ potentials**.
+- Defines the interatomic interactions using empirical potentials such as EAM, MEAM, or LJ potentials**.
 - Example usage:
    pair_style eam/alloy
    pair_coeff * * Mishin-Ni-Al-2009.eam.alloy Al
