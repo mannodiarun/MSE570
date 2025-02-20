@@ -1,1 +1,25 @@
-
+Global Parameters
+ISTART =  1            (Read existing wavefunction, if there)
+ISPIN  =  2            (Non-Spin polarised DFT)
+LREAL  = .FALSE.       (Projection operators: automatic)
+ENCUT  =  500        (Cut-off energy for plane wave basis set, in eV)
+PREC   =  Normal     (Precision level)
+LWAVE  = .TRUE.        (Write WAVECAR or not)
+LCHARG = .TRUE.        (Write CHGCAR or not)
+ADDGRID= .TRUE.        (Increase grid, helps GGA convergence)
+ 
+Electronic Relaxation
+ISMEAR =  0
+SIGMA  =  0.05
+EDIFF  =  1E-08
+ 
+Molecular Dynamics
+IBRION =  0            (Activate MD)
+NSW    =  10000          (Max ionic steps)
+EDIFFG = -1E-02        (Ionic convergence, eV/A)
+POTIM  =  1            (Timestep in fs)
+SMASS  =  0            (MD Algorithm: -3-microcanonical ensemble, 0-canonical ensemble)
+TEBEG  =     300     (Start temperature K)
+TEEND  =     300     (Final temperature K)
+NWRITE =  0            (For long MD-runs use NWRITE=0 or NWRITE=1)
+ 
