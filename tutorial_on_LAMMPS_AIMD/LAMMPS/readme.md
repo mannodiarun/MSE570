@@ -15,7 +15,7 @@ Before running MD simulations, you need to install LAMMPS. Below are the install
 3. Follow the installation instructions provided on the website.
 
 (B) Installing LAMMPS on macOS
-1. Ensure that **Homebrew** is pre-installed on your Mac. If not, install it using: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+1. Ensure that **Homebrew** is pre-installed on your Mac. If not, install it using the guide. 
 2. Visit the official macOS installation guide:  
    👉 [LAMMPS macOS Installation](https://docs.lammps.org/Install_mac.html)
 3. Install LAMMPS using Homebrew: brew install lammps
